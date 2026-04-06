@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product — AnimeGear</title>
+    <meta name="description" content="View product details, select your size, and order your custom hoodie." />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-brand">⚡ AnimeGear</a>
+        <div class="nav-links">
+            <a href="index.html">Shop</a>
+        </div>
+    </nav>
+
+    <div class="product-detail" id="product-detail">
+        <a href="index.html" class="back-btn">← Back to Shop</a>
+        <div class="loading-state">
+            <div class="spinner"></div>
+            <p>جاري تحميل المنتج...</p>
+        </div>
+    </div>
+
+    <!-- ── CHECKOUT MODAL ── -->
+    <div class="modal-overlay" id="checkout-overlay">
+        <div class="modal" dir="rtl">
+            <div class="modal-header">
+                <h2>🛒 إتمام الطلب</h2>
+                <button class="modal-close" id="modal-close-btn">✕</button>
+            </div>
+            <div class="modal-body">
+
+                <!-- Order summary -->
+                <div id="order-summary"
+                    style="display:flex;gap:1rem;align-items:center;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.9rem;margin-bottom:1.25rem;">
+                    <img id="order-img" src="" alt="Product"
+                        style="width:60px;height:60px;object-fit:cover;border-radius:8px;" />
+                    <div>
+                        <div id="order-pname" style="font-weight:600;font-size:0.95rem;"></div>
+                        <div id="order-pdetails" style="font-size:0.82rem;color:var(--muted);margin-top:0.2rem;"></div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label>الاسم الكامل</label>
+                        <input type="text" id="cf-name" placeholder="أدخل اسمك بالكامل" required />
+                    </div>
+                    <div class="form-group">
+                        <label>رقم الواتساب</label>
+                        <input type="tel" id="cf-whatsapp" placeholder="مثال: 01234567890" required />
+                    </div>
+                    <div class="form-group">
+                        <label>عنوان التوصيل</label>
+                        <textarea id="cf-address" placeholder="العنوان بالتفصيل (المدينة، المحافظة، الشارع)"
+                            required></textarea>
+                    </div>
+
+                    <div class="disclaimer">
+                        <strong>⚠️ تنبيه هام — يرجى القراءة</strong>
+                        كل هودي هو <strong>قطعة مخصصة تُصنع بناءً على طلبك</strong>. لذا، لا يُسمح بالاسترجاع أو
+                        الاستبدال
+                        إلا في حالة وجود عيب صناعة واضح. في حال رفض استلام الطلب، سيتم
+                        <strong>إبلاغ جهاز حماية المستهلك واتخاذ الإجراءات اللازمة</strong>.
+                    </div>
+
+                    <button type="submit" class="btn-primary"
+                        style="width:100%;border-radius:var(--radius);font-size:1rem;padding:0.9rem;" id="submit-btn">
+                        ✅ تأكيد الطلب
+                    </button>
+                </form>
+
+                <!-- Success state -->
+                <div class="order-success" id="order-success">
+                    <div class="success-icon">✓</div>
+                    <h3 style="font-family:'Orbitron',monospace;font-size:1.2rem;">تم تأكيد الطلب بنجاح!</h3>
+                    <p style="color:var(--muted);font-size:0.9rem;text-align:center;line-height:1.6;">
+                        شكراً لثقتكم بنا! 🎉<br />
+                        سيقوم فريقنا بالتواصل معكم قريباً عبر الواتساب لتأكيد تفاصيل الطلب وترتيب ميعاد التوصيل.
+                    </p>
+                    <button class="btn-outline"
+                        onclick="document.getElementById('checkout-overlay').classList.remove('open');window.location.href='index.html'">
+                        العودة للمتجر
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="js/db.js"></script>
+    <script src="js/product.js"></script>
+</body>
+
+</html>
